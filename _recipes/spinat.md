@@ -6,6 +6,8 @@ image: spinat.jpg
 size: 4 serving
 time: 1 hour
 author: Oma
+vegan: x
+favorite: x
 ---
 
 * `250 g` Butter
@@ -47,5 +49,3 @@ author: Oma
 ---
 
 > Mit Deckel auf niedriger Hitze gaaren.
-
----
