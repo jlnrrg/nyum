@@ -1,0 +1,17 @@
+name: Build CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install pandoc
+        run: sudo apt install -y pandoc
+
+      - name: Run build
+        run: bash build.sh
