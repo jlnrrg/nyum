@@ -9,9 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      
+    steps:      
       - name: Install pandoc
         run: |
           wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-1-amd64.deb
