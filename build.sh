@@ -17,7 +17,7 @@ while [[ $# -gt 0 ]]; do
         shift
     elif [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
         echo "Usage: bash build.sh [-q | --quiet] [-c | --clean]"
-        echo "  Builds the site. If the -c flag is given, stops after resetting docs/ and _temp/."
+        echo "  Builds the site. If the -c flag is given, stops after resetting _site/ and _temp/."
         exit
     else
         shift
@@ -36,12 +36,12 @@ function x {
     $@
 }
 
-status "Resetting docs/ and _temp/..."
+status "Resetting _site/ and _temp/..."
 # (...with a twist, just to make sure this doesn't throw an error the first time)
-x mkdir -p docs/
-x touch docs/dummy.txt
-x rm -r docs/
-x mkdir -p docs/
+x mkdir -p _site/
+x touch _site/dummy.txt
+x rm -r _site/
+x mkdir -p _site/
 x mkdir -p _temp/
 x touch _temp/dummy.txt
 x rm -r _temp/
@@ -50,12 +50,12 @@ x mkdir -p _temp/
 $CLEAN && exit
 
 status "Copying assets..."
-x cp -r _assets/ docs/assets/
+x cp -r _assets/ _site/assets/
 
 status "Copying static files..."
 for FILE in _recipes/*; do
     [[ "$FILE" == *.md ]] && continue
-    x cp "$FILE" docs/
+    x cp "$FILE" _site/
 done
 
 status "Building recipe pages..."
@@ -64,7 +64,7 @@ for FILE in _recipes/*.md; do
         --metadata-file config.yaml \
         --metadata updatedtime="$(date -r "$FILE" "+%Y-%m-%d")" \
         --template _templates/recipe.template.html \
-        -o "docs/$(basename "$FILE" .md).html"
+        -o "_site/$(basename "$FILE" .md).html"
 done
 
 status "Extracting metadata..."
@@ -130,7 +130,7 @@ x pandoc _templates/technical/empty.md \
     --metadata updatedtime="$(date "+%Y-%m-%d")" \
     --metadata-file _temp/index.json \
     --template _templates/index.template.html \
-    -o docs/index.html
+    -o _site/index.html
 
 status "Assembling search index..."
 echo "[" > _temp/search.json
@@ -141,7 +141,7 @@ for FILE in _temp/*.metadata.json; do
     SEPARATOR=","
 done
 echo "]" >> _temp/search.json
-x cp -r _temp/search.json docs/
+x cp -r _temp/search.json _site/
 
 TIME_END=$(date +%s)
 TIME_TOTAL=$((TIME_END-TIME_START))
