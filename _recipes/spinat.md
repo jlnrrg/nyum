@@ -6,7 +6,7 @@ image: spinat.jpg
 size: 4 serving
 time: 1 hour
 author: Oma
-vegan: x
+veggie: x
 favorite: x
 ---
 
