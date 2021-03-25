@@ -1,7 +1,7 @@
 ---
 title: Spinat
 category: Gemüse
-description: Spinat nach Omas Art
+description: Omas Spinat Rezept
 image: spinat.jpg
 size: 4 serving
 time: 1 hour
