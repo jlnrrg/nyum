@@ -3,8 +3,8 @@ title: Spinat
 category: Gemüse
 description: Omas Spinat Rezept
 image: spinat.jpg
-size: 4 serving
-time: 1 hour
+size: 4 Portionen
+time: 1 Stunde
 author: Oma
 veggie: x
 favorite: x
@@ -18,7 +18,7 @@ favorite: x
 
 * `3` Zwiebeln
   
-> Kleingehackte Zwiebeln in den Topf geben und auf niedriger Hitze garen.
+> Kleingehackte Zwiebeln in den Topf geben und auf niedriger Hitze garen.<br>
 > **dürfen nicht braun werden**
 
 ---
@@ -41,7 +41,7 @@ favorite: x
 
 ---
 
-* Muskat
+* ` ` Muskat
 * `1 Schuss` Sahne
   
 > Muskat und Sahne hinzugeben
