@@ -23,7 +23,7 @@ Below, on the right, is the same page shown at tablet scale. More interestingly,
 
 ![](_assets/readme-images/2-tablets.jpg)
 
-Finally, more of the same on three phone-sized screens. The three-column layout doesn't fit here, so instructions are shown below ingredients.
+Finally, more of the same on three phone-sized screens. The three-column layout doesn't fit here, so instructions are shown below ingredients. And *of course* the light's turned off if you've enabled dark mode on your device.
 
 ![](_assets/readme-images/3-phones.jpg)
 
@@ -36,13 +36,13 @@ First off, either `git clone` this repository or [download it as a ZIP](https://
 
 I don't like complicated dependency trees and poorly-documented build processes, so here's an **exhaustive list of the dependencies** you're not overwhelmingly likely to already have:
 
-* [Pandoc](https://pandoc.org) – any version released in the last few years will probably work.
+* [Pandoc](https://pandoc.org) – version 2.8 (released in November 2019) or later.
 
-    On macOS, assuming you're using [Homebrew](https://brew.sh), `brew install pandoc` will do the trick. On Linux, your package manager almost certainly has it. As for Windows: I haven't used it in a decade, so you're on your own.
+    On macOS, assuming you're using [Homebrew](https://brew.sh), `brew install pandoc` will do the trick. On Linux, your package manager almost certainly has it (although the version it provides might be outdated – recent binaries are available [here](https://github.com/jgm/pandoc/releases/latest)).
 
 That's it, only one dependency! Hooray!
 
-(Since `build.sh` relies on some Bash-specific bits and bobs, you'll also need that – but since it's the default shell on most systems, you're likely running it already.)
+(Since `build.sh` relies on some Bash-specific bits and bobs, you'll also need that – but since it's the default shell on most non-Windows systems, you're likely running it already. If you're a Windows user, don't despair: Through the magic of [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and possibly [some Git or text editor reconfiguration to deal with line endings](https://github.com/doersino/nyum/issues/10), it's definitely possible to run this tool. If you run into trouble, feel free to [file an issue](https://github.com/doersino/nyum/issues), but know that I might be unable to offer much well-founded advice as I haven't used Windows in a decade.)
 
 
 ### Configuration
@@ -67,7 +67,7 @@ Each recipe **begins with YAML front matter specifying its title**, how many ser
 
 The **body of a recipe consists of horizontal-rule-separated steps, each listing ingredients relevant in that step along with the associated instruction**. Ingredients are specified as an unordered list, with ingredient amounts enclosed in backticks (this enables the columns on the resulting website – if you don't care about that, omit the backticks). The instructions must be preceded with a `>`. Note that a step can also solely consist of an instruction.
 
-*You've got the full power of Markdown at your disposal – douse your recipes in formatting, include a picture for each step, and use the garlic emoji as liberally as you should be using garlic in your cooking!*
+*You've got the full power of Markdown at your disposal – douse your recipes in [formatting](https://github.com/doersino/nyum/blob/main/_recipes/kkaennipjeon.md), include a picture for each step, and use the garlic emoji as liberally as you should be using garlic in your cooking!*
 
 ```markdown
 ---
@@ -126,6 +126,16 @@ For my own convenience, I've written `deploy.sh`, which reads a remote target of
 * Run `bash deploy.sh --help` to learn about another very exciting flag!
 
 
+### Updating
+
+As bugs are fixed and features added (not that I expect much of either), you might wish to update your instance. Instead of adherence to versioning best-practices or even a semblance of an update scheme, here's instructions on how to perform a manual update:
+
+1. Replace `_assets/`, `_templates/`, `build.sh`, and `deploy.sh` of your instance with what's currently available in this repository.
+2. Check if any new knobs and toggles have been added to `config.yaml` and adapt them into your `config.yaml`.
+
+That should do it! (Perhaps build your site and inspect it to verify that nothing has broken – feel free to [file an issue](https://github.com/doersino/nyum/issues) if something has.)
+
+
 ## FAQ
 
 (As in "𝓕ound, by me, to be likely-to-be-𝓐sked 𝓠uestions, the reason being that I asked these questions to myself during construction of this thing".)
@@ -147,11 +157,11 @@ Each recipe has a set of metadata (specified using YAML, but that's not relevant
 This led me down the path of...
 
 1. Writing the metadata of each recipe to a JSON file in `_temp/` by feeding them into Pandoc and using a template solely consisting of `$meta-json$`.
-2. Writing the paths of each metadata files, along with the associated category, to a separate file in `temp/` using a similar minimal template.
+2. Writing the paths of each metadata file, along with the associated category, to a separate file in `temp/` using a similar minimal template.
 3. Employing a `cut`-`sort`-`uniq` pipeline to distill a list of unique categories.
 4. Using a good ol' bespoke nested-loops join for grouping, *i.e.*, iterating through the list of categories and for each category, writing its name to the output JSON file before iterating though the list of paths-and-categories from step 2 to figure-out-the-path-of-and-collect the recipe metadata belonging to the current category.
 
-The final implementation is a bit more complicated than this pseudocode – largely because I, for some reason and despite knowing better, decided to "gracefully" deal with uncategorized recipes.
+The final implementation is a bit more complicated than this pseudocode – largely because of string munging overhead.
 
 Building the search "index" works similarly, but without the need for any grouping shenanigans.
 
@@ -179,7 +189,7 @@ The CSS I've written to render Pandoc's output in three columns is a bit fragile
 
 ### Any plans for future development?
 
-Eh, not really. Maybe a dark mode. Or more powerful search, *e.g.*, being able to search based on labels, or navigating search results with the arrow keys. And *content*, but that won't be publicly available.
+Eh, not really. Maybe a dark mode. Or more powerful search, *e.g.*, being able to search based on labels. Some additional proposed enhancements that I may or may not implement are tracked in [an issue](https://github.com/doersino/nyum/issues/1). And *content*, but that won't be publicly available.
 
 
 ### Is there a C-based tool that's much better but not yours, so your not-invented-here syndrome didn't permit you to use it?

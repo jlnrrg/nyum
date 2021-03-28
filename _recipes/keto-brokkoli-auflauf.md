@@ -32,10 +32,10 @@ time: 30 Minuten
 * `2` Eier
 * `150ml` Schlagsahne
 * `75g` Doppelrahmfrischkäse
+* `25g` Schinkenwürfel
 * ` ` Salz
 * ` ` Pfeffer
 * ` ` Muskat
-* `25g` Schinkenwürfel
 
 > Eier, Sahne und Frischkäse mit einem Schneebesen in einer Rührschüssel verrühren. Mit Salz, Pfeffer und Muskat kräftig würzen. Knoblauch, Hälfte Käse und Schickenwürfel unterrühren.
 

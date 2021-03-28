@@ -16,9 +16,14 @@ strings:
   source_label: Quelle
   spicy_label: Scharf
   vegan_label: Vegan
+<<<<<<< HEAD
   meat_label: Fleisch
   footer_text: Guten Appetit!
-  updated_on: Aktualisiert am
+=======
+  meat_label: Meat
+  footer_text: Enjoy!
+  updated_on: Updated on
+>>>>>>> upstream/main
 
 # Remote for deployment – the value of this setting will be passed to rsync as a
 # destination, so you probably want it to look like USER@SERVER:PATH. Make sure
