@@ -7,6 +7,13 @@ size: 4 Portionen
 time: 1 Stunde
 author: Oma
 veggie: x
+vegan:
+sweet:
+salty:
+sour:
+bitter:
+umami:
+spicy:
 favorite: x
 ---
 
@@ -19,7 +26,8 @@ favorite: x
 * `3` Zwiebeln
   
 > Kleingehackte Zwiebeln in den Topf geben und auf niedriger Hitze garen.<br>
-> **dürfen nicht braun werden**
+>
+>>> dürfen nicht braun werden
 
 ---
 

@@ -6,6 +6,19 @@ image: keto-brokkoli-auflauf.jpg
 source: https://www.fitforfun.de/rezepte/keto-brokkoli-auflauf
 size: 4 Portionen
 time: 30 Minuten
+veggie: x
+vegan:
+sweet:
+salty:
+sour:
+bitter:
+umami:
+spicy:
+
+nutrition:
+  - 630 Kcal
+  - 38 g Zucker
+  - 46 g Fett
 ---
 
 * `500 g` Brokkoli
