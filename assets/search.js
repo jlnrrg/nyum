@@ -25,18 +25,19 @@ function search(query) {
     let results = [];
     searchIndex.forEach(e => {
         let score = 0;
-        if (matches(e.title, query)) score += 20;
+        if (matches(e["title"], query)) score += 20;
         if (matches(e["original_title"], query)) score += 10;
         if (matches(e["category"], query)) score += 5;
         if (matches(e["author"], query)) score += 5;
         if (matches(e["description"], query)) score += 2;
         if (matches(e["htmlfile"], query)) score += 1;
 
-        // boost favories a little
-        if (score > 0 && e["favorite"]) score += 2;
+        // significantly increase score if the query occurs right at the start of the (original) title
+        if (matchesStart(e["title"], query)) score += 10;
+        if (matchesStart(e["original_title"], query)) score += 5;
 
-        // slightly increase score if the query occurs right at the start of the title
-        if (matchesStart(e.title, query)) score += 3;
+        // boost favorites a little
+        if (score > 0 && e["favorite"]) score += 2;
 
         results.push({score: score, e: e});
     });
@@ -68,9 +69,14 @@ function showResults(results) {
             + `<h3>`
             + `<i class="icons">`
             + (e.favorite ? `<img src="assets/tabler-icons/tabler-icon-star.svg"> ` : ``)
-            + (e.spicy ? `<img src="assets/tabler-icons/tabler-icon-flame.svg"> ` : ``)
-            + ((e.veggie || e.vegan) ? `` : `<img src="assets/tabler-icons/tabler-icon-bone.svg"> `)
+            + ((e.veggie || e.vegan) ? `` : `<img src="assets/tabler-icons/tabler-icon-meat.svg"> `)
             + (e.vegan ? `<img src="assets/tabler-icons/tabler-icon-leaf.svg"> ` : ``)
+            + (e.spicy ? `<img src="assets/tabler-icons/tabler-icon-pepper.svg"> ` : ``)
+            + (e.sweet ? `<img src="assets/tabler-icons/tabler-icon-candy.svg"> ` : ``)
+            + (e.salty ? `<img src="assets/tabler-icons/tabler-icon-salt.svg"> ` : ``)
+            + (e.sour ? `<img src="assets/tabler-icons/tabler-icon-lemon.svg"> ` : ``)
+            + (e.bitter ? `<img src="assets/tabler-icons/tabler-icon-coffee.svg"> ` : ``)
+            + (e.umami ? `<img src="assets/tabler-icons/tabler-icon-mushroom.svg"> ` : ``)
             + `</i>`
             + `<span>${e.title}</span> `
             + (e.original_title ? `<em>${e.original_title}</em>` : ``)
