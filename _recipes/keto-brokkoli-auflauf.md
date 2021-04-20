@@ -2,6 +2,10 @@
 title: Keto Brokkoli Auflauf
 category: Keto
 description: Der Brokkoli-Auflauf ist ideal für eine ketogene Ernährungsweise, da er hauptsächlich aus Brokkoli, Eiern, Sahne, Frischkäse und Schinkenwürfeln besteht.
+nutrition:
+  - 630 Kcal
+  - 38 g Zucker
+  - 46 g Fett
 image: keto-brokkoli-auflauf.jpg
 source: https://www.fitforfun.de/rezepte/keto-brokkoli-auflauf
 size: 4 Portionen
@@ -14,11 +18,6 @@ sour:
 bitter:
 umami:
 spicy:
-
-nutrition:
-  - 630 Kcal
-  - 38 g Zucker
-  - 46 g Fett
 ---
 
 * `500 g` Brokkoli
